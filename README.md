@@ -1,6 +1,5 @@
 Online Bookshelf
 =========
----------
 Default database:
 
 ```
