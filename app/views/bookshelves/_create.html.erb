@@ -1,0 +1,10 @@
+<% style ||= "" %>
+<%= form_for @fresh_bookshelf, html: { class: "form-mod", role: "form", style: style } do |f| %>
+    <% if params[:sg_up_err] %>
+      <%= render 'layouts/messages' %>
+    <% end %>
+    <%= f.text_field :name, class: "form-control form-control-top", placeholder: "Your name" %>
+    <%= f.password_field :password, class: "form-control form-control-middle", placeholder: "Password" %>
+    <%= f.password_field :password_confirmation, class: "form-control form-control-bottom", placeholder: "Confirm password" %>
+    <%= button_tag 'Create!', class: "btn btn-lg btn-primary btn-block" %>
+<% end %>

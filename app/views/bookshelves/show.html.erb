@@ -1,0 +1,19 @@
+<% if @recent_books.empty? && @book.empty? %>
+  <h3 class="text-center">There are no books at this moment :(</h3>
+<% end %>
+<% if !@recent_books.empty? %>
+  <h3>Books added last time:</h3>
+  <% tmp = @book %>
+  <% @book = @recent_books %>
+  <%= render 'books/list', style: "display:none;" if !mobile_device? %>
+  <% @book = tmp %>
+<% end %>
+<% if !@book.empty? %>
+  <% if !@recent_books.empty? %>
+    <h3>Another books:</h3>
+  <% else %>
+    <h3>Your books:</h3>
+  <% end %>
+  <%= render 'books/list', style: "display:none;" if !mobile_device? %>
+  <%= render 'books/list' if mobile_device? %>
+<% end %>

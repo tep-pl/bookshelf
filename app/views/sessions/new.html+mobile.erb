@@ -1,0 +1,37 @@
+<div class="mobile-mod">
+  <%= render 'layouts/messages' if !params[:sg_up_err] && !params[:sg_in_err] %>
+  <h2 class="mobile-mod-heading text-center">Welcome to online bookshelf!</h2>
+  </br>
+  <%= button_tag 'Create your own', class: "btn btn-lg btn-primary btn-block register" %>
+  <%= render 'bookshelves/create', style: "display:none;" %>
+  </br>
+  <h4 class="text-center">Or tap your name on the list below:</h4>
+  </br>
+  <div class="list-group">
+    <% @bookshelf.each do |bookshelf| %>
+      <p class="list-group-item text-center nick" id="<%= "name_#{bookshelf.name}" %>">
+        <%= bookshelf.name %>
+      </p>
+      <%= render 'create', name: bookshelf.name, style: "display:none;" %>
+    <% end %>
+  </div>
+  <%= content_tag :div, 'Administration area', class: "list-group-item text-center nick", id: "name_admin" %>
+  <%= render 'create', name: 'admin', style: "display:none;" %>
+</div>
+
+<!-- if any errors in sign-up/in form - show it -->
+<% if params[:sg_up_err] || params[:sg_in_err] %>
+  <% content_for :scripts do %>
+    <script>
+      $(document).ready(function () {
+        <% if params[:sg_up_err] %>
+          $.fn.toggler($('.register'),2);
+          $("html, body").animate({scrollTop: $('.register').offset().top-60});
+        <% else %>
+          $.fn.toggler($('#<%= params[:sg_in_err] %>'),3);
+          $("html, body").animate({scrollTop: $('#<%= params[:sg_in_err] %>').offset().top-60});
+        <% end %>
+      });
+    </script>
+  <% end %>
+<% end %>

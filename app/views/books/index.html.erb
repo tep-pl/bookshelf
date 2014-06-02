@@ -1,0 +1,24 @@
+<%= render 'layouts/modal', modal_type: 'book-modal' %>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <br>
+    <a href="#" data-toggle="modal" data-target="#book-modal" class="btn btn-lg btn-primary btn-block">Add new book</a>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<p></p>
+<%= render 'list', style: "display:none;" if !mobile_device? %>
+<%= render 'list' if mobile_device? %>
+
+<!-- show modal if any errors in new-book form -->
+<% if params[:new_book_err] %>
+  <% content_for :scripts do %>
+    <script>
+      $(document).ready(function () {
+        $('#book-modal').modal({ show: true })
+      });
+    </script>
+  <% end %>
+<% end %>

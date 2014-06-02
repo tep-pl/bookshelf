@@ -1,0 +1,14 @@
+<%= render 'layouts/modal', modal_type: 'sign-up-modal' if params[:controller]=='sessions' %>
+
+<%= render 'sessions/create' %>
+
+<!-- show modal if any errors in sign-up form -->
+<% if params[:sg_up_err] %>
+  <% content_for :scripts do %>
+    <script>
+      $(document).ready(function () {
+        $('#sign-up-modal').modal({ show: true })
+      });
+    </script>
+  <% end %>
+<% end %>

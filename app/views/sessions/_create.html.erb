@@ -1,0 +1,26 @@
+<% style ||= "" %>
+<% name ||= "" %>
+<%= form_tag sessions_path, class: "form-mod", style: style, role: "form" do %>
+  <% if !mobile_device? %>
+    <%= render 'layouts/messages' %>
+    <h2 class="form-signin-heading text-center">Welcome to online bookshelf!</h2>
+    <% if params[:controller] == 'bookshelves' %>
+      <%= hidden_field_tag :name, name %>
+      <%= content_tag :div, name, class: "list-group-item text-center", id: "name_admin" %>
+      <%= password_field_tag :password, params[:password], class: "form-control form-control-bottom", placeholder: "Password", autofocus: true %>
+    <% else %>
+      <%= text_field_tag :name, params[:name], class: "form-control form-control-top", placeholder: "Your name", autofocus: true %>
+      <%= password_field_tag :password, params[:password], class: "form-control form-control-bottom", placeholder: "Password" %>
+    <% end %>
+      <%= button_tag 'Sign in', class: "btn btn-lg btn-primary btn-block" %>
+    <% if params[:controller] == 'sessions' %>
+      </br>
+      <h4 class="text-center">Don't have your own bookshelf yet? <a href="#" data-toggle="modal" data-target="#sign-up-modal">Create</a>!</h4>
+    <% end %>
+  <% else %>
+    <%= render 'layouts/messages' if params[:sg_in_err] == "name_#{name}" %>
+    <%= hidden_field_tag :name, name %>
+    <%= password_field_tag :password, params[:password], class: "form-control form-control-top", placeholder: "Password" %>
+    <%= button_tag 'Sign in', class: "btn btn-lg btn-primary btn-block" %>
+  <% end %>
+<% end %>

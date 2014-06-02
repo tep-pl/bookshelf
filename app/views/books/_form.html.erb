@@ -1,0 +1,10 @@
+<%= form_for @fresh_book, html: { class: "form-mod", role: "form" } do |f| %>
+    <%= render 'layouts/messages' %>
+    <%= f.text_field :author, class: "form-control form-control-top", placeholder: "Author name"%>
+    <%= f.text_field :title, class: "form-control form-control-middle", placeholder: "Title" %>
+    <%= f.file_field :cover, class: "form-control form-control-bottom" %>
+    <%= button_tag 'Save!', class: "btn btn-lg btn-primary btn-block" %>
+    <% if params[:action] == 'edit' %>
+      <%= link_to 'Back', books_path, class: "btn btn-lg btn-info btn-block" %>
+    <% end %>
+<% end %>

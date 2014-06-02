@@ -1,0 +1,27 @@
+<% if @book.empty? %>
+    <h3 class="text-center">There are no available books at this moment :(</h3>
+<% end %>
+<% @book.each_slice(4) do |slice| %>
+    <div class="row">
+      <% slice.each do |book| %>
+          <div class="col-md-3">
+            <div class="thumbnail listed">
+              <%= image_tag book.cover_url(:thumb).to_s, class: "center-block" %><br>
+              <div class="caption text-center">
+                <strong><%= book.author %></strong><br>
+                <em><%= book.title %></em>
+              </div>
+              <div class="caption text-center" style="<%= style ||= "" %>">
+                <% if params[:controller] == 'bookshelves' && params[:action] == 'new_pos' %>
+                    <%= link_to 'Get it!', add_pos_bookshelf_path(@bookshelf, book), method: :patch, class: "btn btn-info btn-xs" %>
+                <% elsif params[:controller] == 'bookshelves' && params[:action] == 'show' %>
+                    <%= link_to 'Remove', remove_pos_bookshelf_path(@bookshelf, book), method: :patch, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
+                <% elsif params[:controller] == 'books' %>
+                    <%= link_to 'Remove', book_path(book), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+<% end %>

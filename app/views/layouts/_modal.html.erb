@@ -1,0 +1,18 @@
+<div id="<%= modal_type %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title text-center" id="myModalLabel">Fill in the form below:</h4>
+      </div>
+      <div class="modal-body">
+        <% if modal_type == 'sign-up-modal' %>
+          <%= render 'bookshelves/create' %>
+        <% end %>
+        <% if modal_type == 'book-modal' %>
+          <%= render 'books/form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="message-mod">
+  <%= render 'layouts/messages' %>
+</div>
+<%= render 'books/list', style: "display:none;" if !mobile_device? %>
+<%= render 'books/list' if mobile_device? %>

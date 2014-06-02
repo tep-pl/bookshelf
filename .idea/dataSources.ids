@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails bkshelf: development" uuid="0c710208-2dd2-4d9d-93c2-8ec563274dfb">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails bkshelf: test" uuid="3635dc5b-e70a-4b53-9383-92d6ed09b070">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails bkshelf: production" uuid="d2f1daa4-b6e6-4c10-8e50-baa6e4ba93c3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
